@@ -1,0 +1,7 @@
+- paths.data_dir=../../main/Data
+- train=true
+- trainer.max_epochs=1
+- val=false
+- save_pred=false
+- pred_dataset=null
+- plotting=null

@@ -1,0 +1,38 @@
+[2026-05-16 13:14:00,821][pinnstorch.utils.utils][INFO] - Enforcing tags! <cfg.extras.enforce_tags=True>
+[2026-05-16 13:14:00,823][pinnstorch.utils.utils][INFO] - Printing config tree with Rich! <cfg.extras.print_config=True>
+[2026-05-16 13:14:00,849][pinnstorch.utils.utils][INFO] - GPU is not found. Using CPU.
+[2026-05-16 13:14:00,849][pinnstorch.utils.utils][INFO] - Model will not be compiled with CUDA Graph.
+[2026-05-16 13:14:00,849][pinnstorch.utils.utils][INFO] - Setting optimizer capturable attribute to False.
+[2026-05-16 13:14:00,849][pinnstorch.utils.utils][INFO] - Enabling automatic optimization.
+[2026-05-16 13:14:00,854][pinnstorch.train][INFO] - Instantiating time domain <pinnstorch.data.TimeDomain>
+[2026-05-16 13:14:00,854][pinnstorch.train][INFO] - Instantiating spatial domain <pinnstorch.data.Interval>
+[2026-05-16 13:14:00,854][pinnstorch.train][INFO] - Instantiating mesh <pinnstorch.data.Mesh>
+[2026-05-16 13:14:00,856][pinnstorch.utils.utils][INFO] - Data is available.
+[2026-05-16 13:14:00,860][pinnstorch.train][INFO] - Instantiating training dataset number 1: <pinnstorch.data.MeshSampler>
+[2026-05-16 13:14:00,865][pinnstorch.train][INFO] - Instantiating training dataset number 2: <pinnstorch.data.InitialCondition>
+[2026-05-16 13:14:00,866][pinnstorch.train][INFO] - Instantiating training dataset number 3: <pinnstorch.data.PeriodicBoundaryCondition>
+[2026-05-16 13:14:00,866][pinnstorch.train][INFO] - Instantiating validation dataset number 1: <pinnstorch.data.MeshSampler>
+[2026-05-16 13:14:00,867][pinnstorch.train][INFO] - Instantiating datamodule <pinnstorch.data.PINNDataModule>
+[2026-05-16 13:14:00,868][pinnstorch.train][INFO] - Instantiating neural net <pinnstorch.models.FCN>
+[2026-05-16 13:14:00,869][pinnstorch.train][INFO] - Instantiating model <pinnstorch.models.PINNModule>
+[2026-05-16 13:14:00,873][pinnstorch.train][INFO] - Instantiating callbacks...
+[2026-05-16 13:14:00,873][pinnstorch.utils.instantiators][INFO] - Instantiating callback <lightning.pytorch.callbacks.ModelCheckpoint>
+[2026-05-16 13:14:00,874][pinnstorch.utils.instantiators][INFO] - Instantiating callback <lightning.pytorch.callbacks.RichModelSummary>
+[2026-05-16 13:14:00,874][pinnstorch.utils.instantiators][INFO] - Instantiating callback <lightning.pytorch.callbacks.RichProgressBar>
+[2026-05-16 13:14:00,874][pinnstorch.train][INFO] - Instantiating loggers...
+[2026-05-16 13:14:00,874][pinnstorch.utils.instantiators][INFO] - Instantiating logger <lightning.pytorch.loggers.csv_logs.CSVLogger>
+[2026-05-16 13:14:00,875][pinnstorch.train][INFO] - Instantiating trainer <lightning.pytorch.trainer.Trainer>
+[2026-05-16 13:14:00,906][pinnstorch.train][INFO] - Logging hyperparameters!
+[2026-05-16 13:14:00,912][pinnstorch.train][INFO] - Starting training!
+[2026-05-16 13:14:01,503][pinnstorch.train][INFO] - Elapsed time: 0.5908167362213135
+[2026-05-16 13:14:01,503][pinnstorch.train][INFO] - Median time for each batch: 0.3942248821258545
+[2026-05-16 13:14:01,504][pinnstorch.utils.utils][INFO] - Output dir: /Users/feifeixiao/Desktop/fpinns_paper/codes/my_PINNs/pytorch_examples/schrodinger/examples/schrodinger/outputs/13-14-00
+[2026-05-16 13:14:01,505][pinnstorch.utils.utils][INFO] - Metric value not found! <metric_name=val/error_u>
+Make sure metric name logged in LightningModule is correct!
+Make sure `optimized_metric` name in `hparams_search` config is correct!
+[2026-05-16 13:14:01,505][pinnstorch.utils.utils][INFO] - Metric value not found! <metric_name=val/error_v>
+Make sure metric name logged in LightningModule is correct!
+Make sure `optimized_metric` name in `hparams_search` config is correct!
+[2026-05-16 13:14:01,505][pinnstorch.utils.utils][INFO] - Metric value not found! <metric_name=val/error_h>
+Make sure metric name logged in LightningModule is correct!
+Make sure `optimized_metric` name in `hparams_search` config is correct!

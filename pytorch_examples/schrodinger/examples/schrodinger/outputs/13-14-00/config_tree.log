@@ -1,0 +1,155 @@
+CONFIG
+├── data
+│   └── _target_: pinnstorch.data.PINNDataModule                                
+│                                                                               
+├── model
+│   └── _target_: pinnstorch.models.PINNModule                                  
+│       _partial_: true                                                         
+│       loss_fn: mse                                                            
+│       jit_compile: false                                                      
+│       amp: false                                                              
+│       lazy: false                                                             
+│       cudagraph_compile: true                                                 
+│       inline: false                                                           
+│       optimizer:                                                              
+│         _target_: torch.optim.Adam                                            
+│         _partial_: true                                                       
+│         lr: 0.001                                                             
+│         weight_decay: 0.0                                                     
+│         capturable: true                                                      
+│       scaler:                                                                 
+│         _target_: torch.cuda.amp.GradScaler                                   
+│                                                                               
+├── callbacks
+│   └── model_checkpoint:                                                       
+│         _target_: lightning.pytorch.callbacks.ModelCheckpoint                 
+│         dirpath: /Users/feifeixiao/Desktop/fpinns_paper/codes/my_PINNs/pytorch
+│         filename: epoch_{epoch:03d}_{val/loss}                                
+│         monitor: val/loss                                                     
+│         verbose: null                                                         
+│         save_last: true                                                       
+│         save_top_k: 1                                                         
+│         mode: min                                                             
+│         auto_insert_metric_name: false                                        
+│         save_weights_only: false                                              
+│         every_n_train_steps: null                                             
+│         train_time_interval: null                                             
+│         every_n_epochs: null                                                  
+│         save_on_train_epoch_end: null                                         
+│       model_summary:                                                          
+│         _target_: lightning.pytorch.callbacks.RichModelSummary                
+│         max_depth: -1                                                         
+│       rich_progress_bar:                                                      
+│         _target_: lightning.pytorch.callbacks.RichProgressBar                 
+│                                                                               
+├── logger
+│   └── csv:                                                                    
+│         _target_: lightning.pytorch.loggers.csv_logs.CSVLogger                
+│         save_dir: /Users/feifeixiao/Desktop/fpinns_paper/codes/my_PINNs/pytorc
+│         name: csv/                                                            
+│         prefix: ''                                                            
+│                                                                               
+├── trainer
+│   └── _target_: lightning.pytorch.trainer.Trainer                             
+│       default_root_dir: /Users/feifeixiao/Desktop/fpinns_paper/codes/my_PINNs/
+│       min_epochs: 1                                                           
+│       max_epochs: 1                                                           
+│       accelerator: gpu                                                        
+│       devices:                                                                
+│       - 0                                                                     
+│       enable_progress_bar: true                                               
+│       check_val_every_n_epoch: 60001                                          
+│       inference_mode: false                                                   
+│       log_every_n_steps: 1                                                    
+│       deterministic: false                                                    
+│                                                                               
+├── paths
+│   └── root_dir: .                                                             
+│       data_dir: ../../main/Data                                               
+│       rk_dir: ./data/irk_weights                                              
+│       log_dir: ./logs/                                                        
+│       output_dir: /Users/feifeixiao/Desktop/fpinns_paper/codes/my_PINNs/pytorc
+│       work_dir: /Users/feifeixiao/Desktop/fpinns_paper/codes/my_PINNs/pytorch_
+│                                                                               
+├── extras
+│   └── ignore_warnings: false                                                  
+│       enforce_tags: true                                                      
+│       print_config: true                                                      
+│                                                                               
+├── task_name
+│   └── schrodinger                                                             
+├── tags
+│   └── ['dev']                                                                 
+├── train
+│   └── True                                                                    
+├── test
+│   └── False                                                                   
+├── ckpt_path
+│   └── None                                                                    
+├── seed
+│   └── 1234                                                                    
+├── net
+│   └── _target_: pinnstorch.models.FCN                                         
+│       _partial_: true                                                         
+│       layers:                                                                 
+│       - 2                                                                     
+│       - 100                                                                   
+│       - 100                                                                   
+│       - 100                                                                   
+│       - 100                                                                   
+│       - 2                                                                     
+│       output_names:                                                           
+│       - u                                                                     
+│       - v                                                                     
+│                                                                               
+├── N0
+│   └── 50                                                                      
+├── N_b
+│   └── 50                                                                      
+├── N_f
+│   └── 20000                                                                   
+├── time_domain
+│   └── _target_: pinnstorch.data.TimeDomain                                    
+│       t_interval:                                                             
+│       - 0                                                                     
+│       - 1.57079633                                                            
+│       t_points: 201                                                           
+│                                                                               
+├── spatial_domain
+│   └── _target_: pinnstorch.data.Interval                                      
+│       x_interval:                                                             
+│       - -5                                                                    
+│       - 4.9609375                                                             
+│       shape:                                                                  
+│       - 256                                                                   
+│       - 1                                                                     
+│                                                                               
+├── mesh
+│   └── _target_: pinnstorch.data.Mesh                                          
+│       root_dir: ../../main/Data                                               
+│       read_data_fn: ???                                                       
+│       ub:                                                                     
+│       - 5.0                                                                   
+│       - 1.57079633                                                            
+│       lb:                                                                     
+│       - -5.0                                                                  
+│       - 0.0                                                                   
+│                                                                               
+├── train_datasets
+│   └── [{'mesh_sampler': {'_target_': 'pinnstorch.data.MeshSampler', '_partial_
+├── val_dataset
+│   └── [{'mesh_sampler': {'_target_': 'pinnstorch.data.MeshSampler', '_partial_
+├── pred_dataset
+│   └── None                                                                    
+├── val
+│   └── False                                                                   
+├── save_pred
+│   └── False                                                                   
+├── optimized_metric
+│   └── error:                                                                  
+│       - u                                                                     
+│       - v                                                                     
+│       - h                                                                     
+│                                                                               
+└── plotting
+    └── None                                                                    

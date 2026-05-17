@@ -1,0 +1,5 @@
+- paths.data_dir=../../appendix/Data
+- train=true
+- trainer.max_epochs=1
+- val=false
+- plotting=null

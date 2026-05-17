@@ -1,0 +1,4 @@
+- paths.data_dir=../../main/Data
+- train=false
+- val=false
+- test=false

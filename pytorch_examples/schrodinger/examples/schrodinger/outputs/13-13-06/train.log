@@ -1,0 +1,28 @@
+[2026-05-16 13:13:06,610][pinnstorch.utils.utils][INFO] - Enforcing tags! <cfg.extras.enforce_tags=True>
+[2026-05-16 13:13:06,613][pinnstorch.utils.utils][INFO] - Printing config tree with Rich! <cfg.extras.print_config=True>
+[2026-05-16 13:13:06,643][pinnstorch.utils.utils][INFO] - GPU is not found. Using CPU.
+[2026-05-16 13:13:06,643][pinnstorch.utils.utils][INFO] - Model will not be compiled with CUDA Graph.
+[2026-05-16 13:13:06,643][pinnstorch.utils.utils][INFO] - Setting optimizer capturable attribute to False.
+[2026-05-16 13:13:06,643][pinnstorch.utils.utils][INFO] - Enabling automatic optimization.
+[2026-05-16 13:13:06,648][pinnstorch.train][INFO] - Instantiating time domain <pinnstorch.data.TimeDomain>
+[2026-05-16 13:13:06,649][pinnstorch.train][INFO] - Instantiating spatial domain <pinnstorch.data.Interval>
+[2026-05-16 13:13:06,649][pinnstorch.train][INFO] - Instantiating mesh <pinnstorch.data.Mesh>
+[2026-05-16 13:13:06,650][pinnstorch.utils.utils][INFO] - Data is available.
+[2026-05-16 13:13:06,656][pinnstorch.train][INFO] - Instantiating training dataset number 1: <pinnstorch.data.MeshSampler>
+[2026-05-16 13:13:06,666][pinnstorch.train][INFO] - Instantiating training dataset number 2: <pinnstorch.data.InitialCondition>
+[2026-05-16 13:13:06,667][pinnstorch.train][INFO] - Instantiating training dataset number 3: <pinnstorch.data.PeriodicBoundaryCondition>
+[2026-05-16 13:13:06,668][pinnstorch.train][INFO] - Instantiating validation dataset number 1: <pinnstorch.data.MeshSampler>
+[2026-05-16 13:13:06,669][pinnstorch.train][INFO] - Instantiating prediction dataset number 1: <pinnstorch.data.MeshSampler>
+[2026-05-16 13:13:06,670][pinnstorch.train][INFO] - Instantiating datamodule <pinnstorch.data.PINNDataModule>
+[2026-05-16 13:13:06,671][pinnstorch.train][INFO] - Instantiating neural net <pinnstorch.models.FCN>
+[2026-05-16 13:13:06,677][pinnstorch.train][INFO] - Instantiating model <pinnstorch.models.PINNModule>
+[2026-05-16 13:13:06,683][pinnstorch.train][INFO] - Instantiating callbacks...
+[2026-05-16 13:13:06,683][pinnstorch.utils.instantiators][INFO] - Instantiating callback <lightning.pytorch.callbacks.ModelCheckpoint>
+[2026-05-16 13:13:06,685][pinnstorch.utils.instantiators][INFO] - Instantiating callback <lightning.pytorch.callbacks.RichModelSummary>
+[2026-05-16 13:13:06,685][pinnstorch.utils.instantiators][INFO] - Instantiating callback <lightning.pytorch.callbacks.RichProgressBar>
+[2026-05-16 13:13:06,685][pinnstorch.train][INFO] - Instantiating loggers...
+[2026-05-16 13:13:06,685][pinnstorch.utils.instantiators][INFO] - Instantiating logger <lightning.pytorch.loggers.csv_logs.CSVLogger>
+[2026-05-16 13:13:06,686][pinnstorch.train][INFO] - Instantiating trainer <lightning.pytorch.trainer.Trainer>
+[2026-05-16 13:13:06,755][pinnstorch.train][INFO] - Logging hyperparameters!
+[2026-05-16 13:13:06,762][pinnstorch.train][INFO] - Median time for each batch: nan
+[2026-05-16 13:13:06,774][pinnstorch.utils.utils][INFO] - Output dir: /Users/feifeixiao/Desktop/fpinns_paper/codes/my_PINNs/pytorch_examples/schrodinger/examples/schrodinger/outputs/13-13-06

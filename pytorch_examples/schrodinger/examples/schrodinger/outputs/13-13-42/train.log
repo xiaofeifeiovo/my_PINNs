@@ -1,0 +1,41 @@
+[2026-05-16 13:13:42,947][pinnstorch.utils.utils][INFO] - Enforcing tags! <cfg.extras.enforce_tags=True>
+[2026-05-16 13:13:42,949][pinnstorch.utils.utils][INFO] - Printing config tree with Rich! <cfg.extras.print_config=True>
+[2026-05-16 13:13:42,975][pinnstorch.utils.utils][INFO] - GPU is not found. Using CPU.
+[2026-05-16 13:13:42,975][pinnstorch.utils.utils][INFO] - Model will not be compiled with CUDA Graph.
+[2026-05-16 13:13:42,975][pinnstorch.utils.utils][INFO] - Setting optimizer capturable attribute to False.
+[2026-05-16 13:13:42,975][pinnstorch.utils.utils][INFO] - Enabling automatic optimization.
+[2026-05-16 13:13:42,979][pinnstorch.train][INFO] - Instantiating time domain <pinnstorch.data.TimeDomain>
+[2026-05-16 13:13:42,980][pinnstorch.train][INFO] - Instantiating spatial domain <pinnstorch.data.Interval>
+[2026-05-16 13:13:42,980][pinnstorch.train][INFO] - Instantiating mesh <pinnstorch.data.Mesh>
+[2026-05-16 13:13:42,981][pinnstorch.utils.utils][INFO] - Data is available.
+[2026-05-16 13:13:42,987][pinnstorch.train][INFO] - Instantiating training dataset number 1: <pinnstorch.data.MeshSampler>
+[2026-05-16 13:13:42,996][pinnstorch.train][INFO] - Instantiating training dataset number 2: <pinnstorch.data.InitialCondition>
+[2026-05-16 13:13:42,997][pinnstorch.train][INFO] - Instantiating training dataset number 3: <pinnstorch.data.PeriodicBoundaryCondition>
+[2026-05-16 13:13:42,998][pinnstorch.train][INFO] - Instantiating validation dataset number 1: <pinnstorch.data.MeshSampler>
+[2026-05-16 13:13:42,999][pinnstorch.train][INFO] - Instantiating datamodule <pinnstorch.data.PINNDataModule>
+[2026-05-16 13:13:43,000][pinnstorch.train][INFO] - Instantiating neural net <pinnstorch.models.FCN>
+[2026-05-16 13:13:43,006][pinnstorch.train][INFO] - Instantiating model <pinnstorch.models.PINNModule>
+[2026-05-16 13:13:43,011][pinnstorch.train][INFO] - Instantiating callbacks...
+[2026-05-16 13:13:43,012][pinnstorch.utils.instantiators][INFO] - Instantiating callback <lightning.pytorch.callbacks.ModelCheckpoint>
+[2026-05-16 13:13:43,013][pinnstorch.utils.instantiators][INFO] - Instantiating callback <lightning.pytorch.callbacks.RichModelSummary>
+[2026-05-16 13:13:43,014][pinnstorch.utils.instantiators][INFO] - Instantiating callback <lightning.pytorch.callbacks.RichProgressBar>
+[2026-05-16 13:13:43,014][pinnstorch.train][INFO] - Instantiating loggers...
+[2026-05-16 13:13:43,014][pinnstorch.utils.instantiators][INFO] - Instantiating logger <lightning.pytorch.loggers.csv_logs.CSVLogger>
+[2026-05-16 13:13:43,014][pinnstorch.train][INFO] - Instantiating trainer <lightning.pytorch.trainer.Trainer>
+[2026-05-16 13:13:43,049][pinnstorch.train][INFO] - Logging hyperparameters!
+[2026-05-16 13:13:43,058][pinnstorch.train][INFO] - Median time for each batch: nan
+[2026-05-16 13:13:43,058][pinnstorch.train][INFO] - Plotting the results
+[2026-05-16 13:13:43,058][pinnstorch.utils.utils][ERROR] - 
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pinnstorch/utils/utils.py", line 73, in wrap
+    metric_dict, object_dict = task_func(
+                               ~~~~~~~~~^
+        cfg=cfg, read_data_fn=read_data_fn, pde_fn=pde_fn, output_fn=output_fn
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pinnstorch/train.py", line 189, in train
+    preds=preds_dict,
+          ^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'preds_dict' where it is not associated with a value
+[2026-05-16 13:13:43,059][pinnstorch.utils.utils][INFO] - Output dir: /Users/feifeixiao/Desktop/fpinns_paper/codes/my_PINNs/pytorch_examples/schrodinger/examples/schrodinger/outputs/13-13-42
