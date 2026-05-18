@@ -7,13 +7,16 @@ as recommended by the [original PINNs repository](https://github.com/maziarraiss
 
 ### 1. Standalone Pure PyTorch (`standalone_schrodinger.py`)
 
-A self-contained implementation that only requires `torch`, `numpy`, `scipy`, `matplotlib`.
+A self-contained implementation that only requires `torch`, `numpy`, `scipy`, `matplotlib`, and `pyDOE`.
 No extra framework dependencies. Direct port of the original TensorFlow v1 code to PyTorch.
 
 ```bash
-pip install torch numpy scipy matplotlib pyDOE
+pip install -r requirements.txt
 python standalone_schrodinger.py
 ```
+
+On GPU machines, install a CUDA-enabled PyTorch build that matches the target environment before
+installing or running the rest of the dependencies.
 
 ### 2. Using `pinnstorch` Framework (Recommended for production)
 

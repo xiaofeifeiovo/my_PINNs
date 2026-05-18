@@ -1,0 +1,7 @@
+# Dependencies for the standalone PyTorch Schrodinger PINN example.
+# Install a CUDA-enabled PyTorch build that matches the target GPU environment.
+torch>=2.1
+numpy>=1.24,<2.0
+scipy>=1.10,<2.0
+matplotlib>=3.7,<4.0
+pyDOE==0.3.8

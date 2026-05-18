@@ -12,6 +12,15 @@ For more information, please refer to the following: (https://maziarraissi.githu
 
   - Raissi, Maziar, Paris Perdikaris, and George Em Karniadakis. "[Physics Informed Deep Learning (Part II): Data-driven Discovery of Nonlinear Partial Differential Equations](https://arxiv.org/abs/1711.10566)." arXiv preprint arXiv:1711.10566 (2017).
 
+## PyTorch examples
+
+The `pytorch_examples/` folder contains PyTorch versions of selected PINNs examples:
+
+- `standalone_schrodinger.py`: a self-contained PyTorch implementation of the nonlinear Schrodinger equation example. It uses PyTorch autograd for first- and second-order derivatives, reads `main/Data/NLS.mat`, and saves `schrodinger_result.png` after training and evaluation.
+- `schrodinger/train.py` and `burgers/train.py`: examples built on the `pinnstorch` framework, using Hydra configuration files under each example's `configs/` folder.
+
+For the standalone PyTorch example, install the dependencies from `pytorch_examples/requirements.txt`. On GPU machines, install a CUDA-enabled PyTorch build matching the target CUDA environment before running the script.
+
 ## Citation
 
     @article{raissi2019physics,
