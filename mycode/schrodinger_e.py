@@ -29,6 +29,7 @@ class Dnn(torch.nn.Module):
     
 class PINN(torch.nn.Module):
     def __init__(self, layers, lb, ub):
+        super().__init__()
         self.register_buffer('lb', torch.tensor(lb, dtype = torch.float32))
         self.register_buffer('ub', torch.tensor(ub, dtype = torch.float32))
         self.dnn = Dnn(layers)
@@ -40,9 +41,9 @@ class PINN(torch.nn.Module):
         return uv[: , 0:1], uv[: , 1:2]
     
     def _ensure_grad(self, x, t):
-        if not x.requires_gard():
+        if not x.requires_grad:
             x = x.clone().detach().requires_grad_(True)
-        if not t.requires_gard():
+        if not t.requires_grad:
             t = t.clone().detach().requires_grad_(True)
         return x , t
     
@@ -57,7 +58,7 @@ class PINN(torch.nn.Module):
 
     def net_f_uv(self, x, t):
 
-        x, t = self._ensure_grad()
+        x, t = self._ensure_grad(x, t)
 
         u, v, u_x, v_x = self.net_uv(x, t)
         u_t = torch.autograd.grad( u, t, grad_outputs = torch.ones_like(u) ,create_graph = True, retain_graph = True)[0]
