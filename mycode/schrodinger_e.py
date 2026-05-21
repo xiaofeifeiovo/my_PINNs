@@ -232,7 +232,26 @@ if __name__ == '__main__':
     elapsed = time.time() - start_time
     print(f'Train time: f{elapsed}')
 
-    print('finished')
+    print('End training')
 
+    u_pred, v_pred, f_u_pred, f_v_pred = model.predict(X_star)
+    h_pred = np.sqrt(u_pred**2 + v_pred**2)
+
+    error_u = np.linalg.norm(u_star - u_pred, 2) / np.linalg.norm(u_star, 2)
+    error_v = np.linalg.norm(v_star - v_pred, 2) / np.linalg.norm(v_star, 2)
+    error_h = np.linalg.norm(h_star - h_pred, 2) / np.linalg.norm(h_star, 2)
+
+    print(f'Error u:{error_u:e}')
+    print(f'Error v:{error_v:e}')
+    print(f'Error h:{error_h:e}')
+
+    U_pred = u_pred.reshape(X.shape)
+    V_pred = v_pred.reshape(X.shape)
+    H_pred = h_pred.reshape(X.shape)
+    FU_pred = f_u_pred.reshape(X.shape)
+    FV_pred = f_v_pred.reshape(X.shape)
+
+    X_u_train_c = np.concatenate([X0, X_lb, X_ub], 0)
     
+
 
