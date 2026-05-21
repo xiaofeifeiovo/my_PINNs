@@ -251,7 +251,64 @@ if __name__ == '__main__':
     FU_pred = f_u_pred.reshape(X.shape)
     FV_pred = f_v_pred.reshape(X.shape)
 
-    X_u_train_c = np.concatenate([X0, X_lb, X_ub], 0)
+    X_u_train = np.concatenate([X0, X_lb, X_ub], 0)
+
     
+    # 创建图像
+    fig = plt.figure(figsize=(7.0, 4.0))
+    ax = fig.add_subplot(111)
+    ax.axis('off')
+    
+    # ---- 上半部分：|h(t,x)| 的全景热力图 ----
+    gs0 = gridspec.GridSpec(1, 2)
+    gs0.update(top=1 - 0.06, bottom=1 - 1 / 3, left=0.15, right=0.85, wspace=0)
+    ax = plt.subplot(gs0[:, :])
+    
+    # imshow 画二维热力图，横轴是 t，纵轴是 x
+    h = ax.imshow(H_pred.T, interpolation='nearest', cmap='YlGnBu',
+                  extent=[lb[1], ub[1], lb[0], ub[0]],  # 坐标轴范围
+                  origin='lower', aspect='auto')
+    divider = make_axes_locatable(ax)
+    cax = divider.append_axes("right", size="5%", pad=0.05)
+    fig.colorbar(h, cax=cax)
+    
+    # 在热力图上叠加训练数据点（黑色 ×）
+    ax.plot(X_u_train[:, 1], X_u_train[:, 0], 'kx',
+            label=f'Data ({X_u_train.shape[0]} points)',
+            markersize=4, clip_on=False)
+    
+    # 标注 t=0.75, 1.00, 1.25 的截面线
+    line = np.linspace(x.min(), x.max(), 2)[:, None]
+    ax.plot(t[75] * np.ones((2, 1)), line, 'k--', linewidth=1)
+    ax.plot(t[100] * np.ones((2, 1)), line, 'k--', linewidth=1)
+    ax.plot(t[125] * np.ones((2, 1)), line, 'k--', linewidth=1)
+    
+    ax.set_xlabel('$t$')
+    ax.set_ylabel('$x$')
+    ax.legend(frameon=False, loc='best')
+    ax.set_title('$|h(t,x)|$', fontsize=10)
+    
+    # ---- 下半部分：三个时间截面的预测 vs 精确解对比 ----
+    gs1 = gridspec.GridSpec(1, 3)
+    gs1.update(top=1 - 1 / 3, bottom=0, left=0.1, right=0.9, wspace=0.5)
+    
+    for i, idx in enumerate([75, 100, 125]):
+        ax = plt.subplot(gs1[0, i])
+        ax.plot(x, Exact_h[:, idx], 'b-', linewidth=2, label='Exact')
+        ax.plot(x, H_pred[idx, :], 'r--', linewidth=2, label='Prediction')
+        ax.set_xlabel('$x$')
+        ax.set_ylabel('$|h(t,x)|$')
+        ax.set_title(f'$t = {t[idx, 0]:.2f}$', fontsize=10)
+        ax.axis('square')
+        ax.set_xlim([-5.1, 5.1])
+        ax.set_ylim([-0.1, 5.1])
+        if i == 1:
+            ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.8),
+                      ncol=5, frameon=False)
+    
+    fig.savefig('schrodinger_result.png', dpi=150, bbox_inches='tight')
+    plt.close(fig)
+    print('Plot saved to schrodinger_result.png')
+
 
 
