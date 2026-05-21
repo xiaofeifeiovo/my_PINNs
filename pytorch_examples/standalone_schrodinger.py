@@ -571,8 +571,8 @@ if __name__ == "__main__":
     #     缺点：对初始值敏感，计算量大。
     #   组合策略：Adam 先大致定位 → L-BFGS 精细优化（PINN 文献的标准做法）
     
-    # nIter = 50000
-    nIter = 500
+    nIter = 50000
+    # nIter = 500
     optimizer_adam = torch.optim.Adam(model.parameters(), lr=1e-3)
     
     print("Phase 1: Adam optimization")
@@ -601,10 +601,10 @@ if __name__ == "__main__":
     optimizer_lbfgs = torch.optim.LBFGS(
         model.parameters(),
         lr=1.0,
-        # max_iter=50000,                                    # 最大迭代次数
-        max_iter=500,                                    # 最大迭代次数
-        # max_eval=50000,                                    # 最大函数评估次数
-        max_eval=500,                                    # 最大函数评估次数
+        max_iter=50000,                                    # 最大迭代次数
+        # max_iter=500,                                    # 最大迭代次数
+        max_eval=50000,                                    # 最大函数评估次数
+        # max_eval=500,                                    # 最大函数评估次数
         history_size=50,                                   # 存储的历史梯度数
         line_search_fn='strong_wolfe',                     # 强 Wolfe 线搜索
         tolerance_change=1.0 * np.finfo(float).eps,        # 变化容忍度
