@@ -126,7 +126,7 @@ if __name__ == '__main__':
     Max_eval = 50000
     LBFGS_lr = 1
 
-    output_frequenry = 2000
+    output_frequency = 2000
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     layers = (2, 100, 100, 100, 100, 2)
@@ -199,8 +199,38 @@ if __name__ == '__main__':
     print('Adam:')
     optimizer_adam = torch.optim.Adam(model.parameters(), lr = Adam_lr)
 
+    start_time = time.time()
+    for i in range(AIter):
+        optimizer_adam.zero_grad()
+        loss = loss_fn()
+        loss.backward()
+        optimizer_adam.step()
+
+        if i % output_frequency ==0:
+            elapsed = time.time() - start_time
+            print(f'Iteration:{i},loss = {loss.item()} consumed time:{elapsed} \n')
+            start_time = time.time()
 
 
+    print('L-BFGS')
+    optimizer_LBFGS = torch.optim.LBFGS(
+        model.parameters(),
+        lr = LBFGS_lr,
+        max_iter = Max_iter,
+        max_eval = Max_eval,
+        line_search_fn = 'strong_wolfe',
+        tolerance_change = np.finfo(float).eps
+    )
+
+    def closure():
+        optimizer_LBFGS.zero_grad()
+        loss = loss_fn()
+        loss.backward()
+        return loss
+    
+    optimizer_LBFGS.step(closure)
+    elapsed = time.time() - start_time
+    print(f'Train time: f{elapsed}')
 
     print('finished')
 
