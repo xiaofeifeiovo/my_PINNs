@@ -1,9 +1,11 @@
 import torch 
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.gridspec as gridspec
 import time
 from pathlib import Path
 import scipy
+from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 
 class Dnn(torch.nn.Module):
@@ -306,9 +308,9 @@ if __name__ == '__main__':
             ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.8),
                       ncol=5, frameon=False)
     
-    fig.savefig('schrodinger_result.png', dpi=150, bbox_inches='tight')
+    output_path = script_dir / 'schrodinger_result.png'
+    fig.savefig(output_path, dpi=150, bbox_inches='tight')
     plt.close(fig)
-    print('Plot saved to schrodinger_result.png')
-
+    print(f'Plot saved to {output_path}')
 
 
